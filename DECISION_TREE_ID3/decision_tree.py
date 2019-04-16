@@ -1,29 +1,3 @@
-# decision_tree.py
-# ---------
-# Licensing Information:  You are free to use or extend these projects for
-# personal and educational purposes provided that (1) you do not distribute
-# or publish solutions, (2) you retain this notice, and (3) you provide clear
-# attribution to UT Dallas, including a link to http://cs.utdallas.edu.
-#
-# This file is part of Homework 3 for CS6375: Machine Learning.
-# Gautam Kunapuli (gautam.kunapuli@utdallas.edu)
-# Sriraam Natarajan (sriraam.natarajan@utdallas.edu),
-#
-#
-# INSTRUCTIONS:
-# ------------
-# 1. This file contains a skeleton for implementing the ID3 algorithm for
-# Decision Trees. Insert your code into the various functions that have the
-# comment "INSERT YOUR CODE HERE".
-#
-# 2. Do NOT modify the classes or functions that have the comment "DO NOT
-# MODIFY THIS FUNCTION".
-#
-# 3. Do not modify the function headers for ANY of the functions.
-#
-# 4. You may add any other helper functions you feel you may need to print,
-# visualize, test, or save the data and results. However, you MAY NOT utilize
-# the package scikit-learn OR ANY OTHER machine learning package in THIS file.
 
 import numpy as np
 import os
@@ -37,15 +11,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.tree import DecisionTreeClassifier
 
 def partition(x):
-    """
-    Partition the column vector x into subsets indexed by its unique values (v1, ... vk)
 
-    Returns a dictionary of the form
-    { v1: indices of x == v1,
-      v2: indices of x == v2,
-      ...
-      vk: indices of x == vk }, where [v1, ... vk] are all the unique values in the vector z.
-    """
     x = x.astype(int)
     x_df = pd.DataFrame(x)
     partion_dict = {}
@@ -277,11 +243,6 @@ def compute_error(y_true, y_pred):
     #print(len(y_pred))
     n = y_true.size
     
-    """
-    Computes the average error between the true labels (y_true) and the predicted labels (y_pred)
-
-    Returns the error = (1/n) * sum(y_true != y_pred)
-    """
     
     # INSERT YOUR CODE HERE
     sum = 0
@@ -296,10 +257,7 @@ def compute_error(y_true, y_pred):
 
 
 def pretty_print(tree, depth=0):
-    """
-    Pretty prints the decision tree to the console. Use print(tree) to print the raw nested dictionary representation
-    DO NOT MODIFY THIS FUNCTION!
-    """
+    
     if depth == 0:
         print('TREE')
     
@@ -321,12 +279,7 @@ def pretty_print(tree, depth=0):
 
 
 def render_dot_file(dot_string, save_file, image_format='png'):
-    """
-    Uses GraphViz to render a dot file. The dot file can be generated using
-        * sklearn.tree.export_graphviz()' for decision trees produced by scikit-learn
-        * to_graphviz() (function is in this file) for decision trees produced by  your code.
-    DO NOT MODIFY THIS FUNCTION!
-    """
+   
     if type(dot_string).__name__ != 'str':
         raise TypeError('visualize() requires a string representation of a decision tree.\nUse tree.export_graphviz()'
                         'for decision trees produced by scikit-learn and to_graphviz() for decision trees produced by'
